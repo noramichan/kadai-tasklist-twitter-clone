@@ -8,14 +8,16 @@
       </ul>
     </div>
   <% end %>
-
-
-<%= f.label :status, 'ステータス' %>
-<%= f.text_field :status %>
-
-<%= f.label :content, 'タスク' %>
-<%= f.text_field :content %>
-
-<%= f.submit '追加' %>
-
 <% end %>
+
+<% if logged_in? %>
+  <%# = f.label :status, 'ステータス' %>
+  <%= form_with(model: @task, local: true) do |f| %>
+    <div class="form-group">
+      status: <%= f.text_area :status, class: 'form-control', rows: 5 %>
+      Task: <%= f.text_area :content, class: 'form-control', rows: 5 %>
+    </div>
+    <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+  <% end %>
+<% end %>
+

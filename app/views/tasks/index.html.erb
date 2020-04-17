@@ -1,16 +1,14 @@
 <% if logged_in? %>
   <p>ログイン完了ユーザ: <%= current_user.name %></p>
   <h1>タスク一覧</h1>
-  <ul>
-    <% @tasks.each do |task| %>
-      <li><%= link_to task.id, task %>
-             :
-          <%= task.status %>
-             &gt;
-          <%= task.content %>        
-      </li>
-    <% end %>
-  </ul>
+    <ul class="list-unstyled">
+      <% @tasks.each do |task| %>
+        <li class="media mb-3">
+          <%= link_to task.id, task %> : Status: <%= task.status %>  Task: <%= task.content %>
+       </li>
+      <% end %>
+      <%#= paginate tasks %>
+    </ul>
     <%= link_to '新規タスクの追加', new_task_path %>
     <%= link_to 'My profile', user_path(current_user) %>
     <%= link_to 'Logout', logout_path, method: :delete %>
