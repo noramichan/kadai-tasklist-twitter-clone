@@ -10,7 +10,6 @@
       <%#= paginate tasks %>
     </ul>
     <%= link_to '新規タスクの追加', new_task_path %>
-    <%= link_to 'My profile', user_path(current_user) %>
     <%= link_to 'Logout', logout_path, method: :delete %>
 <% else %>
 
